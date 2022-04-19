@@ -13,8 +13,8 @@ import (
 )
 
 // ConnectPriceServer for connect to grpc server
-func ConnectPriceServer() protocolPrice.PriceServiceClient {
-	addressGRPC := "localhost:8089"
+func ConnectPriceServer(priceUrl string) protocolPrice.PriceServiceClient {
+	addressGRPC := priceUrl
 	con, err := grpc.Dial(addressGRPC, grpc.WithTransportCredentials(insecure.NewCredentials()), grpc.WithBlock())
 	if err != nil {
 		log.Fatal("cannot dial server: ", err)
@@ -44,6 +44,6 @@ func SubscribePrices(ctx context.Context, symbol string, client protocolPrice.Pr
 		transactionMap[cur.Symbol] = cur
 		mu.Unlock()
 
-		log.Infof("Got currency data Name: %v Ask: %v Bid: %v  at time %v", in.Price.Symbol, in.Price.Ask, in.Price.Bid, in.Price.Time)
+		//log.Infof("Got currency data Name: %v Ask: %v Bid: %v  at time %v", in.Price.Symbol, in.Price.Ask, in.Price.Bid, in.Price.Time)
 	}
 }

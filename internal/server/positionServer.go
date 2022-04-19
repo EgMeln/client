@@ -20,8 +20,8 @@ type PositionServer struct {
 }
 
 // ConnectPositionServer for connect to grpc server
-func ConnectPositionServer() protocolPosition.PositionServiceClient {
-	addressGRPC := "localhost:8083"
+func ConnectPositionServer(url string) protocolPosition.PositionServiceClient {
+	addressGRPC := url
 	con, err := grpc.Dial(addressGRPC, grpc.WithTransportCredentials(insecure.NewCredentials()), grpc.WithBlock())
 	if err != nil {
 		log.Fatal("cannot dial server: ", err)
@@ -31,11 +31,11 @@ func ConnectPositionServer() protocolPosition.PositionServiceClient {
 }
 
 // NewPositionServer returns new service instance
-func NewPositionServer(generatedMap map[string]*model.GeneratedPrice, mutex *sync.RWMutex) *PositionServer {
+func NewPositionServer(generatedMap map[string]*model.GeneratedPrice, mutex *sync.RWMutex, posUrl string) *PositionServer {
 	return &PositionServer{
 		generatedMap: generatedMap,
 		mu:           mutex,
-		posService:   ConnectPositionServer(),
+		posService:   ConnectPositionServer(posUrl),
 	}
 }
 

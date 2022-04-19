@@ -8,12 +8,18 @@ import (
 	"syscall"
 	"time"
 
+	"github.com/EgMeln/client/internal/config"
 	"github.com/EgMeln/client/internal/model"
 	"github.com/EgMeln/client/internal/server"
 	log "github.com/sirupsen/logrus"
 )
 
 func main() {
+	cfg, err := config.New()
+	if err != nil {
+		log.Warnf("Config error %v", err)
+	}
+
 	mute := new(sync.RWMutex)
 	priceMap := map[string]*model.GeneratedPrice{
 		"Aeroflot": {},
@@ -21,12 +27,12 @@ func main() {
 		"Akron":    {},
 	}
 	ctx := context.Background()
-	priceClient := server.ConnectPriceServer()
+	priceClient := server.ConnectPriceServer(cfg.PriceServicePort)
 	log.Infof("start")
 	go server.SubscribePrices(ctx, "Aeroflot", priceClient, mute, priceMap)
 	go server.SubscribePrices(ctx, "ALROSA", priceClient, mute, priceMap)
 	go server.SubscribePrices(ctx, "Akron", priceClient, mute, priceMap)
-	posClient := server.NewPositionServer(priceMap, mute)
+	posClient := server.NewPositionServer(priceMap, mute, cfg.PositionServicePort)
 
 	log.Infof("Start open")
 	t := time.Now()

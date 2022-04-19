@@ -5,6 +5,7 @@ go 1.18
 require (
 	github.com/EgMeln/position_service v0.0.0-20220415054641-a1bc664fbc01
 	github.com/EgMeln/price_service v0.0.0-20220415054148-67b0249ceaa4
+	github.com/caarlos0/env/v6 v6.9.1
 	github.com/google/uuid v1.3.0
 	github.com/sirupsen/logrus v1.8.1
 	google.golang.org/grpc v1.45.0

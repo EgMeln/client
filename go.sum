@@ -6,6 +6,8 @@ github.com/EgMeln/position_service v0.0.0-20220415054641-a1bc664fbc01/go.mod h1:
 github.com/EgMeln/price_service v0.0.0-20220415054148-67b0249ceaa4 h1:s3SpY0bG31dZpaQEriutElURFsBMk72fUWGGtBcxlaw=
 github.com/EgMeln/price_service v0.0.0-20220415054148-67b0249ceaa4/go.mod h1:UVLqcPcLrXerjv/BR7yE7LwTUFdESnx+8rw9G+JauPY=
 github.com/antihax/optional v1.0.0/go.mod h1:uupD/76wgC+ih3iEmQUL+0Ugr19nfwCT1kdvxnR2qWY=
+github.com/caarlos0/env/v6 v6.9.1 h1:zOkkjM0F6ltnQ5eBX6IPI41UP/KDGEK7rRPwGCNos8k=
+github.com/caarlos0/env/v6 v6.9.1/go.mod h1:hvp/ryKXKipEkcuYjs9mI4bBCg+UI0Yhgm5Zu0ddvwc=
 github.com/census-instrumentation/opencensus-proto v0.2.1/go.mod h1:f6KPmirojxKA12rnyqOA5BBL4O983OfeGPqjHWSTneU=
 github.com/cespare/xxhash/v2 v2.1.1/go.mod h1:VGX0DQ3Q6kWi7AoAeZDth3/j3BFtOZR5XLFGgcrjCOs=
 github.com/client9/misspell v0.3.4/go.mod h1:qj6jICC3Q7zFZvVWo7KLAzC3yx5G7kyvSDkc90ppPyw=

@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: minikube-client
+  labels:
+    app: minikube-client
+spec:
+  selector:
+    matchLabels:
+      app: minikube-client
+  template:
+    metadata:
+      labels:
+        app: minikube-client
+    spec:
+      containers:
+        - name: minikube-client
+          image: "minikube-client:latest"
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: POSITION_PORT
+              value: dev-minikube-position-service:8083
+            - name: PRICE_PORT
+              value: minikube-price-service:8089
